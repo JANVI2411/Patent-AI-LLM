@@ -1,0 +1,19 @@
+query_optimizer:
+  description: |
+    Improve the user query if necessary to maximize retrieval relevance from the vector store.
+    user query: {raw_query}
+  expected_output: An optimized version of the user query.
+  agent: query_optimizer
+
+retrieve_and_answer:
+  description: |
+    Use the optimized query to retrieve relevant documents from Qdrant and generate a factual answer.
+    Use ONLY the retrieved context for your response.
+  expected_output: A concise, accurate answer grounded in the retrieved documents.
+  agent: rag
+
+hallucination_checker:
+  description: |
+    Check if the following answer is hallucinated. Base your assessment on whether the answer can be clearly supported by the retrieved context.
+  expected_output: Yes or No with a one-sentence justification.
+  agent: hallucination_checker
