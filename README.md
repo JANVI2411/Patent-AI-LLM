@@ -8,7 +8,7 @@ A smart assistant that answers user questions about future technology trends (li
 
 ### 1. User Asks a Question
 The assistant receives a user query such as:
-> _"What’s the future of lithium batteries?"_
+> _"Give me future innovations or emerging technologies related to lithium batteries"_
 
 ### 2. Understanding the Topic
 - The system extracts the main topic from the user’s query.
@@ -48,8 +48,8 @@ The assistant receives a user query such as:
 
 ## 🌐 Future Enhancements
 - Connect to real-time patent APIs once API keys are available
-- Add reranking and summarization agents for deeper responses
-- Build user dashboard to track topic ingestion status
+- Add summarization agents for deeper responses
+- Build user dashboard 
 
 
 
