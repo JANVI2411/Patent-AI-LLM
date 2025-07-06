@@ -58,6 +58,6 @@ def retrieve_documents(query,filter= None,top_k= 5,reranker_top_n= 3,use_reranke
 @tool("qdrant_retrieval_tool")
 def qdrant_retrieval_tool(query: str):
     """Retrieves relevant documents from Qdrant using OpenAI embeddings and reranking."""
-    docs = retrieve_documents(query, use_reranker=True),
+    docs = retrieve_documents(query, use_reranker=False),
     return docs
 

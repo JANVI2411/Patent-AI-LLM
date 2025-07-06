@@ -51,6 +51,7 @@ class ChatAssistant(Flow[State]):
 
     @listen("start_chat")
     def chat(self):
+        self.state.query = "what is GAAP revenue amount?"
         result = (
             RAGPipelineCrew.kickoff(inputs={"raw_query": self.state.query})
         )

@@ -15,5 +15,5 @@ retrieve_and_answer:
 hallucination_checker:
   description: |
     Check if the following answer is hallucinated. Base your assessment on whether the answer can be clearly supported by the retrieved context.
-  expected_output: Yes or No with a one-sentence justification.
+  expected_output: The output is the JSON format. Keys are Hallucination and Final Answer. Hallucination is either Yes or No. Final Answer is the actual answer. 
   agent: hallucination_checker

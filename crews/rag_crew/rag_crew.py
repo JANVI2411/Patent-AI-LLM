@@ -45,6 +45,7 @@ RAGPipelineCrew = Crew(
     agents = [query_optimizer_agent, rag_agent, hallucination_checker_agent],
     tasks = [query_optimizer_task, rag_task, hallucination_checker_task],
     process = Process.sequential,
+    memory =True, 
     verbose = True
 )
 
