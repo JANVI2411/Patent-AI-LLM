@@ -44,7 +44,7 @@ The assistant receives a user query such as:
 
 
 ## Architecture
-![image](data/RAG_Ingestion_Pipeline.png)
+![image](data/Data_Ingestion_Pipeline.png)
 
 ## 🌐 Future Enhancements
 - Connect to real-time patent APIs once API keys are available
