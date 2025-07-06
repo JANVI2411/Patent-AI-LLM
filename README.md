@@ -44,54 +44,7 @@ The assistant receives a user query such as:
 
 
 ## Architecture
-
-+-----------------------+
-|     User Input        |
-|  (Question about tech)|
-+----------+------------+
-           |
-           v
-+-------------------------------+
-|   Flow: ChatAssistant         |
-+-------------------------------+
-| State: query, topic, status   |
-+-------------------------------+
-           |
-           v
-+-------------------------------+
-| extract_topic()               |
-| -> Get topic from query       |
-| -> Check if data is ready     |
-+-------------------------------+
-           |
-           v
-+----------------------------+
-|        next_step()        |
-|  ┌────────────┬──────────┐|
-|  ▼            ▼          ▼
-|processing   available  not_available
-|    |           |              |
-|    v           v              v
-|processing()  chat()    data_ingestion()
-|                |               |
-|                ▼               ▼
-|      Use RAG to answer   Start background fetch
-+----------------------------+
-
-
-## 🚧 Current Implementation Notes
-
-Since official APIs are restricted or pending approval:
-- Dummy data was used to simulate real patent results.
-- The assistant logic was fully built and tested using this dummy data.
-- This includes:
-  - Topic extraction and status tracking
-  - Data ingestion logic
-  - Multi-agent RAG pipeline integration
-
-Once API access is approved, switching to real-time patent data will be seamless.
-
----
+![image](data/RAG_Ingestion_Pipeline.png)
 
 ## 🌐 Future Enhancements
 - Connect to real-time patent APIs once API keys are available
