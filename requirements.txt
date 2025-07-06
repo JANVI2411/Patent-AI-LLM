@@ -1,21 +1,18 @@
-[project]
-name = "patent_ai"
-version = "0.1.0"
-description = "patent_ai using crewAI"
-authors = [{ name = "Your Name", email = "you@example.com" }]
-requires-python = ">=3.10,<3.13"
-dependencies = [
-    "crewai[tools]>=0.120.1,<1.0.0",
-]
+openai
+nltk
+pydantic
+pandas
+pymupdf
+pillow
+langchain
+langchain-core
+langchain-openai
+langchain-community
+qdrant-client
+crewai
+rank-llm
+# datasets
+# ragas
+# mlflow
+# ipython
 
-[project.scripts]
-kickoff = "patent_ai.main:kickoff"
-run_crew = "patent_ai.main:kickoff"
-plot = "patent_ai.main:plot"
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.crewai]
-type = "flow"

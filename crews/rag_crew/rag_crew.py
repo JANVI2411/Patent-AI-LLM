@@ -2,9 +2,6 @@
 import os
 import yaml
 from crewai import Agent, Task, Crew, Process
-# from crewai.project import CrewBase, agent, task, crew
-# from crewai.agent import Agent, BaseAgent
-# from crewai.task import Task
 from crewai import LLM
 from tools.retrieval_tool import qdrant_retrieval_tool
 from typing import List
@@ -51,62 +48,69 @@ RAGPipelineCrew = Crew(
     verbose = True
 )
 
-# @CrewBase
-# class RAGPipelineCrew:
+
+"""
+from crewai.project import CrewBase, agent, task, crew
+from crewai.agent import Agent, BaseAgent
+from crewai.task import Task
+
+@CrewBase
+class RAGPipelineCrew:
     
-#     llm = LLM(model="gpt-4o-mini")
+    llm = LLM(model="gpt-4o-mini")
 
-#     with open("crews/rag_crew/config/agents.yaml", "r") as af:
-#         agent_configs = yaml.safe_load(af)
+    with open("crews/rag_crew/config/agents.yaml", "r") as af:
+        agent_configs = yaml.safe_load(af)
 
-#     with open("crews/rag_crew/config/tasks.yaml", "r") as tf:
-#         task_configs = yaml.safe_load(tf)
+    with open("crews/rag_crew/config/tasks.yaml", "r") as tf:
+        task_configs = yaml.safe_load(tf)
     
-#     agents: List[BaseAgent]
-#     tasks: List[Task]
+    agents: List[BaseAgent]
+    tasks: List[Task]
 
-#     agents_config = agent_configs
-#     tasks_config = task_configs
+    agents_config = agent_configs
+    tasks_config = task_configs
 
-#     @agent
-#     def query_optimizer(self) -> Agent:
-#         return Agent(config=self.agents_config["query_optimizer"])
+    @agent
+    def query_optimizer(self) -> Agent:
+        return Agent(config=self.agents_config["query_optimizer"])
 
-#     @agent
-#     def rag(self) -> Agent:
-#         return Agent(config=self.agents_config["rag"],
-#                      tools=[qdrant_retrieval_tool],
-#                      llm = self.llm)
+    @agent
+    def rag(self) -> Agent:
+        return Agent(config=self.agents_config["rag"],
+                     tools=[qdrant_retrieval_tool],
+                     llm = self.llm)
     
 
-#     @agent
-#     def hallucination_checker(self) -> Agent:
-#         return Agent(config=self.agents_config["hallucination_checker"],
-#                      llm = self.llm)
+    @agent
+    def hallucination_checker(self) -> Agent:
+        return Agent(config=self.agents_config["hallucination_checker"],
+                     llm = self.llm)
 
-#     @task
-#     def optimize_query(self) -> Task:
-#         print(self.task_configs)
-#         return Task(config = self.tasks_config["query_optimizer"],
-#                     llm = self.llm)
+    @task
+    def optimize_query(self) -> Task:
+        print(self.task_configs)
+        return Task(config = self.tasks_config["query_optimizer"],
+                    llm = self.llm)
 
-#     @task
-#     def retrieve_and_answer(self) -> Task:
-#         return Task(config = self.tasks_config["rag"])
+    @task
+    def retrieve_and_answer(self) -> Task:
+        return Task(config = self.tasks_config["rag"])
 
-#     @task
-#     def check_hallucination(self) -> Task:
-#         return Task(config = self.tasks_config["hallucination_checker"])
+    @task
+    def check_hallucination(self) -> Task:
+        return Task(config = self.tasks_config["hallucination_checker"])
 
-#     @crew
-#     def run(self) -> Crew:
-#         return Crew(
-#             agents=[self.query_optimizer(), self.rag(), self.hallucination_checker()],
-#             tasks=[
-#                 self.optimize_query(),
-#                 self.retrieve_and_answer(),
-#                 self.check_hallucination()
-#             ],
-#             verbose=True
-#         )
+    @crew
+    def run(self) -> Crew:
+        return Crew(
+            agents=[self.query_optimizer(), self.rag(), self.hallucination_checker()],
+            tasks=[
+                self.optimize_query(),
+                self.retrieve_and_answer(),
+                self.check_hallucination()
+            ],
+            verbose=True
+        )
     
+"""

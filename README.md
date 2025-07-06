@@ -13,11 +13,14 @@ The assistant receives a user query such as:
 ### 2. Understanding the Topic
 - The system extracts the main topic from the user’s query.
 - Example: "lithium battery"
+- To save cost, we avoid expensive OpenAI LLM calls and instead plan to use an NER (Named Entity Recognition) model to extract the topic from the query.
+- After extracting the entity, we can compare it with previously seen topics using **Jaccard similarity score** to avoid duplicates or near-duplicates.
+- Other similar comparison techniques include **Cosine Similarity**, **Levenshtein Distance**, and **TF-IDF vector matching**.
 
 ### 3. Check if Data is Ready
 - If the topic data **is already available**, the assistant proceeds to answer.
 - If the topic is **being processed**, the assistant notifies the user.
-- If the topic is **unseen**, the assistant starts data ingestion in the background.
+- If the topic is **not available**, the assistant starts data ingestion pipeline in the background.
 
 ### 4. Three Possible Responses
 - ⚡ **Processing**: _"We’re working on it. Please wait."_
@@ -26,6 +29,16 @@ The assistant receives a user query such as:
 
 ### 5. When Data is Ready
 - A Retrieval-Augmented Generation (RAG) pipeline is used to generate detailed answers using collected patent data.
+
+- To reduce costs further, we use open-source BGE models for embedding generation instead of commercial LLM APIs.
+
+---
+
+## 🧠 Cost Optimization Strategy
+
+- **On-the-request data fetching**: Since patent datasets are huge (in billions), storing everything is costly and inefficient. We only fetch data when a new topic is requested, which helps reduce storage costs.
+- **Background data ingestion pipeline**: Instead of using an agent to trigger this, we use a simple pipeline to avoid unnecessary complexity and latency. Agents are better reserved for tasks needing reasoning or interaction.
+- **Query cache system**: A local cache (query + timestamp) helps reduce duplicate LLM calls. Queries older than a defined threshold can be cleared to save space, while recent ones can be reused to reduce latency and cost.
 
 ---
 
@@ -50,6 +63,8 @@ The assistant receives a user query such as:
 - Connect to real-time patent APIs once API keys are available
 - Add summarization agents for deeper responses
 - Build user dashboard 
+- Improve cost-efficiency further using smarter caching and lighter-weight models
+
 
 
 
