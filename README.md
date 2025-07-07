@@ -63,7 +63,7 @@ The assistant receives a user query such as:
 
 While designing the system to identify emerging technologies from patent documents using a RAG (Retrieval-Augmented Generation) approach, I had several questions and realizations that shaped my solution strategy. Here are my notes and assumptions based on analyzing the problem:
 
-### 1. Can Patents Be Retrieved Using Keywords Like "Emerging Technology"?
+### 1. Can Patents Be Retrieved having the words Like "Emerging Technology" in the query?
 
 Initially, I wondered whether patent documents would contain direct phrases such as:
 
@@ -78,7 +78,7 @@ However, I found that patents are typically written in formal, legal language. T
 * "This invention relates to..."
 * "The prior art fails to address..."
 
-This means rag-based retrieval using terms like "emerging" or "innovative" is unreliable. Patents don’t label themselves that way.
+This means rag-based retrieval using terms like "emerging" or "innovative" is unreliable.
 
 ### 2. Post-Retrieval LLM Analysis for Novelty Detection
 
