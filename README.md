@@ -78,7 +78,7 @@ However, I found that patents are typically written in formal, legal language. T
 * "This invention relates to..."
 * "The prior art fails to address..."
 
-This means keyword-based retrieval using terms like "emerging" or "innovative" is unreliable. Patents don’t label themselves that way.
+This means rag-based retrieval using terms like "emerging" or "innovative" is unreliable. Patents don’t label themselves that way.
 
 ### 2. Post-Retrieval LLM Analysis for Novelty Detection
 
