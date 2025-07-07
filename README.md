@@ -55,16 +55,60 @@ The assistant receives a user query such as:
 
 ---
 
-
 ## Architecture
 ![image](data/Data_Ingestion_Pipeline.png)
+
+
+## My Thoughts / Doubts / Assumptions on This Use Case
+
+While designing the system to identify emerging technologies from patent documents using a RAG (Retrieval-Augmented Generation) approach, I had several questions and realizations that shaped my solution strategy. Here are my notes and assumptions based on analyzing the problem:
+
+### 1. Can Patents Be Retrieved Using Keywords Like "Emerging Technology"?
+
+Initially, I wondered whether patent documents would contain direct phrases such as:
+
+* "emerging technology"
+* "new approach"
+* "innovative solution"
+
+However, I found that patents are typically written in formal, legal language. They avoid subjective or speculative phrases and instead use structured wording like:
+
+* "We claim a method for..."
+* "An apparatus comprising..."
+* "This invention relates to..."
+* "The prior art fails to address..."
+
+This means keyword-based retrieval using terms like "emerging" or "innovative" is unreliable. Patents don’t label themselves that way.
+
+### 2. Post-Retrieval LLM Analysis for Novelty Detection
+
+I plan to use an LLM-based agent to analyze retrieved chunks in a way that identifies what is **new or distinct** compared to prior art. This agent could:
+
+* Compare current patent text against older documents
+* Detect keyword trends over time (e.g., the rise of "sodium-ion")
+* Identify documents with low similarity to previous patents (i.e., novelty proxies)
+
+Approaches include:
+
+* TF-IDF analysis for term emergence
+* Cosine similarity comparisons between old and new embeddings
+* Prompt-based comparison: “What differentiates this from previous inventions?”
+
+### 3. Role of Metadata
+
+To support fine-grained filtering, each vectorized chunk in the database should include metadata like:
+
+* Year of publication
+* IPC class / domain
+* Keyword frequency trends
+* Number of citations
+
+This enables queries like:
+
+* "Find post-2022 claims with rare keywords and no prior art overlap."
 
 ## 🌐 Future Enhancements
 - Connect to real-time patent APIs once API keys are available
 - Add summarization agents for deeper responses
 - Build user dashboard 
 - Improve cost-efficiency further using smarter caching and lighter-weight models
-
-
-
-
